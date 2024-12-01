@@ -1,6 +1,6 @@
 # Stock Index Performance
 
-This project demonstrates how to the FastAPI backend provides API endpoints for handling **index performance** and **composition data**, while the Streamlit frontend allows users to interact with and visualize this data.
+This project demonstrates how the FastAPI backend provides API endpoints for handling **index performance** and **composition data**, while the Streamlit frontend allows users to interact with and visualize this data.
 
 The application also supports **Excel** and **PDF** exports of the index performance and composition data using a factory pattern.
 
