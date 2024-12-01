@@ -1,0 +1,6 @@
+base = "/indexes"
+performance = "/performance"
+composition = "/composition"
+composition_change = "/composition_change"
+summary = "/summary"
+stock_ticker_idx = "/stock_ticker_idx"

@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "./app",
+        "./ui"
+    ],
+    "workbench.editorAssociations": {   
+        "*.md": "vscode.markdown.preview.editor",
+    }
+}

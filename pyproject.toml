@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["Asit Kumar Singh <asit1992@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12.3"
+uvicorn = "^0.30.6"
+fastapi = "^0.112.1"
+pydantic = ">2.0"
+pydantic-settings = "^2.5.2"
+alembic = "^1.13.2"
+httpx = "^0.25.1"
+sqlmodel = "^0.0.22"
+SQLAlchemy = "^2.0.36"
+databases = "^0.9.0"
+yfinance = "^0.2.50"
+aiosqlite = "^0.20.0"
+APScheduler = "^3.11.0"
+streamlit = "^1.40.2"
+fpdf2 = "^2.8.1"
+xlsxwriter = "^3.2.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+pytest-asyncio = "^0.24.0"
+mypy = "^1.8.0"
+coverage = "^7.4.3"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.mypy]
+exclude = ['alembic/', '.*conftest.py', '.*/test.*']
+follow_imports = "normal"
+ignore_missing_imports = false
+namespace_packages = true
+explicit_package_bases = true
+
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+profile = "black"
+combine_as_imports = true
+force_alphabetical_sort_within_sections = true
+lines_between_types = 0
+src_paths = ["./", "./app/"]
+known_third_party = []
+known_first_party = []
+
+[tool.coverage.run]
+concurrency = ["greenlet", "thread"]

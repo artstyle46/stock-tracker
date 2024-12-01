@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    environment:
+      - PYTHON_PATH=./app
+      - DATABASE_URL=sqlite+aiosqlite:///./stocks.db
+      - RUN_FIRST_TIME=false
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    container_name: streamlit-dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./dashboard:/dashboard
+    environment:
+      - API_URL=http://fastapi:8000
+    depends_on:
+      - fastapi
