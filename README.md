@@ -7,18 +7,19 @@ The application also supports **Excel** and **PDF** exports of the index perform
 ## Table of Contents
 - [Installation](#installation)
 - [Accessing the Application](#accessing-the-application)
-- [High Level Design](#high-level-design)
 - [Future Enhancements](#future-enhancements)
 
 ---
 
 ## Installation
 - If you are running for the first time
-Run ```bash
+Run
+```
 RUN_FIRST_TIME=true docker-compose up --build
 ```
 - otherwise
-Run ```bash
+Run
+```
 docker-compose up --build
 ```
 
