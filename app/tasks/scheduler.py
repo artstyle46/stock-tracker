@@ -84,7 +84,7 @@ async def create_startup_tasks(db: AsyncSession):
             ticker_count=5,
         ),
     )
-    end_date = datetime.now(tz=UTC).date() - timedelta(days=1)
+    end_date = datetime.now(tz=UTC).date()
     run_date = end_date - timedelta(days=30)
     existing_tasks = await db.execute(select(Tasks).where(Tasks.run_date == run_date))
     existing_tasks = existing_tasks.scalars().all()

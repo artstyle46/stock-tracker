@@ -114,12 +114,13 @@ class IndexService:
         prev_performance_value: float = 0.0
         start_value = 0.0
         end_value = 0.0
-        for idx, idx_performance in enumerate(result):
-            if idx == 0:
+        for idx_performance in result:
+            if idx_performance.date == start_date:
                 start_value = idx_performance.value
-            if idx == len(result):
+            if idx_performance.date == end_date:
                 end_value = idx_performance.value
-            daily_changes.append(idx_performance.value - prev_performance_value)
+            if prev_performance_value > 0:
+                daily_changes.append(idx_performance.value - prev_performance_value)
             prev_performance_value = idx_performance.value
 
         average_daily_change: float = sum(daily_changes) / len(daily_changes)
@@ -310,30 +311,23 @@ async def execute_index_creator(
     stock_index_name: str | None = None,
     target_date: date | None = None,
 ):
-    end_date = (
-        datetime.now(tz=UTC).date() - timedelta(days=1)
+    target_date = (
+        datetime.now(tz=UTC).date()
         if target_date is None
         else target_date
     )
-    start_date = end_date - timedelta(days=30)
     stock_index_name = (
         settings.STOCK_INDEX_NAME if stock_index_name is None else stock_index_name
     )
 
-    if start_date > end_date:
-        raise ValueError("Start date should be less than end date.")
-    if end_date - start_date > timedelta(days=30):
-        raise ValueError("30 days is the limit of fetching history.")
-    while start_date < end_date:
-        if not (
-            await IndexService.is_index_calculated_and_tickers_present(
-                db=db, stock_index_name=stock_index_name, target_date=start_date
-            )
-        ):
-            await IndexService.build_index(
-                db=db, target_date=start_date, stock_index_name=stock_index_name
-            )
-        start_date = start_date + timedelta(days=1)
+    if not (
+        await IndexService.is_index_calculated_and_tickers_present(
+            db=db, stock_index_name=stock_index_name, target_date=target_date
+        )
+    ):
+        await IndexService.build_index(
+            db=db, target_date=target_date, stock_index_name=stock_index_name
+        )
 
 
 async def fetch_all_stock_index_ticker(db: AsyncSession) -> list[StockIndexResponse]:

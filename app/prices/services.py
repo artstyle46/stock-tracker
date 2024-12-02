@@ -110,7 +110,7 @@ async def execute_ticker_price_fetcher(
     db: AsyncSession = Depends(get_db), target_date: date | None = None
 ):
     end_date = (
-        datetime.now(tz=UTC).date() - timedelta(days=1)
+        datetime.now(tz=UTC).date()
         if target_date is None
         else target_date
     )
