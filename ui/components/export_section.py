@@ -15,7 +15,7 @@ def render_export_section():
     st.subheader("Export Composition Data")
     target_date = st.date_input(
         "Target Date",
-        value=datetime(year=2024, month=10, day=29),
+        value=datetime(year=2024, month=11, day=2),
         key="export_target_date",
     )
 

@@ -17,7 +17,7 @@ def fetch_composition(date):
 def render_composition_section():
     st.subheader("Index Composition")
     selected_date = st.date_input(
-        "Select a Date", value=datetime(year=2024, month=10, day=29)
+        "Select a Date", value=datetime(year=2024, month=11, day=2)
     )
     composition_data = fetch_composition(selected_date.isoformat())
     if composition_data:

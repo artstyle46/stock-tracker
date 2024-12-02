@@ -22,10 +22,10 @@ def fetch_index_performance(start_date: date, end_date: date):
 def render_index_performance_chart():
     st.title("Index Performance Over a period")
     start_date = st.date_input(
-        "Start Date", value=datetime(year=2024, month=9, day=29), key="ipc_start_date"
+        "Start Date", value=datetime(year=2024, month=11, day=2), key="ipc_start_date"
     )
     end_date = st.date_input(
-        "End Date", value=datetime(year=2024, month=10, day=29), key="ipc_end_date"
+        "End Date", value=datetime(year=2024, month=12, day=2), key="ipc_end_date"
     )
     data = fetch_index_performance(start_date, end_date)
 

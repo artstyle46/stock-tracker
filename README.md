@@ -12,15 +12,13 @@ The application also supports **Excel** and **PDF** exports of the index perform
 ---
 
 ## Installation
-- If you are running for the first time
-Run
-```
-RUN_FIRST_TIME=true docker-compose up --build
-```
-- otherwise
-Run
-```
+Running first time
+```bash
 docker-compose up --build
+```
+Otherwise
+```bash
+docker-compose up
 ```
 
 ## Accessing the Application

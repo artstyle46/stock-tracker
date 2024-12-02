@@ -22,7 +22,6 @@ def choose_env_file() -> Path:
 class Settings(BaseSettings):
     LOGGING_LEVEL: str = "DEBUG"
     DATABASE_URL: str = "sqlite+aiosqlite:///./stocks.db"
-    RUN_FIRST_TIME: bool = False
     STOCK_INDEX_NAME: str = "mcap_100"
 
     class Config:

@@ -25,9 +25,8 @@ async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     async with async_session() as session:
-        if settings.RUN_FIRST_TIME:
-            await create_startup_tasks(db=session)
-            await execute_scheduled_tasks(db=session)
+        await create_startup_tasks(db=session)
+        await execute_scheduled_tasks(db=session)
     scheduler.start()
     yield
     scheduler.shutdown()

@@ -18,11 +18,11 @@ def render_summary_metrics_section():
     st.subheader("Summary Metrics")
     start_date = st.date_input(
         "Start Date",
-        value=datetime(year=2024, month=9, day=29),
+        value=datetime(year=2024, month=11, day=2),
         key="summary_start_date",
     )
     end_date = st.date_input(
-        "End Date", value=datetime(year=2024, month=10, day=29), key="summary_end_date"
+        "End Date", value=datetime(year=2024, month=12, day=2), key="summary_end_date"
     )
 
     if start_date <= end_date:

@@ -19,12 +19,12 @@ def render_composition_change():
     st.subheader("Composition Changes")
     start_date = st.date_input(
         "Start Date",
-        value=datetime(year=2024, month=9, day=29),
+        value=datetime(year=2024, month=11, day=2),
         key="comp_change_start_date",
     )
     end_date = st.date_input(
         "End Date",
-        value=datetime(year=2024, month=10, day=29),
+        value=datetime(year=2024, month=12, day=2),
         key="comp_change_end_date",
     )
     composition_data = fetch_composition_change(start_date, end_date)

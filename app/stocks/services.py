@@ -11,7 +11,7 @@ logger = get_logger(__name__)
 
 
 async def ticker_data_from_csv(
-    csv_file: str = "stocks/data/10_companies.csv",
+    csv_file: str = "stocks/data/50_companies.csv",
 ) -> dict[str, str]:
     ticker_name_map = {}
 

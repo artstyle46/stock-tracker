@@ -82,17 +82,16 @@ class IndexService:
             .join(StockTicker, StockTicker.id == StockIndexTicker.stock_ticker_id)
             .where(StockIndex.name == settings.STOCK_INDEX_NAME)
             .where(StockIndexTicker.date == target_date)
+            .where(DailyPrices.date == target_date)
         )
         ticker_data: list[TickerResponse] = []
-        used_ticker: set[str] = set([])
+
         for ticker, market_cap, close_price in result.all():
-            if ticker not in used_ticker:
-                used_ticker.add(ticker)
-                ticker_data.append(
-                    TickerResponse(
-                        ticker=ticker, market_cap=market_cap, close_price=close_price
-                    )
+            ticker_data.append(
+                TickerResponse(
+                    ticker=ticker, market_cap=market_cap, close_price=close_price
                 )
+            )
         return CompositionResponse(
             data=ticker_data,
             target_date=target_date,
